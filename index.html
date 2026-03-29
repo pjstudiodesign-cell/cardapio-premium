@@ -3,52 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardápio Digital - PJ Studio Design</title>
+    <title>PJ Studio Burger - Cardápio Digital</title>
     <style>
-        /* ESTILO PREMIUM DARK - PJ STUDIO DESIGN */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #000; color: #fff; line-height: 1.6; }
+        /* RESET E ESTILO BASE (ESTILO APPLE DARK) */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: #000; color: #fff; padding-bottom: 80px; }
 
-        header { text-align: center; padding: 40px 20px; background: linear-gradient(180deg, #111 0%, #000 100%); border-bottom: 1px solid #333; }
-        header h1 { color: #00ff7f; font-size: 2rem; margin-bottom: 10px; }
+        /* CABEÇALHO */
+        header { text-align: center; padding: 30px 20px; background: #000; border-bottom: 1px solid #1a1a1a; }
+        header h1 { color: #00ff7f; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 5px; }
         header p { color: #888; font-size: 0.9rem; }
 
-        /* MENU DE CATEGORIAS (ABAS) */
+        /* MENU DE NAVEGAÇÃO (FIXO NO TOPO) */
         nav { position: sticky; top: 0; z-index: 1000; background: #000; padding: 15px 0; border-bottom: 1px solid #00ff7f; display: flex; justify-content: center; gap: 10px; overflow-x: auto; }
-        nav a { background: #1a1a1a; color: #fff; padding: 8px 18px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 0.8rem; border: 1px solid #333; white-space: nowrap; transition: 0.3s; }
-        nav a:hover { background: #00ff7f; color: #000; }
+        nav a { background: #1a1a1a; color: #fff; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 0.8rem; border: 1px solid #333; white-space: nowrap; transition: 0.3s; }
+        nav a:active { background: #00ff7f; color: #000; }
 
-        .container { max-width: 800px; margin: auto; padding: 20px; }
+        /* CONTAINER PRINCIPAL */
+        .container { max-width: 900px; margin: auto; padding: 20px; }
         
-        .section-title { display: flex; align-items: center; margin: 30px 0 20px; }
-        .section-title div { width: 4px; height: 25px; background: #00ff7f; margin-right: 10px; }
-        .section-title h2 { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1px; }
+        /* TÍTULOS DE SEÇÃO */
+        .category-title { display: flex; align-items: center; margin: 30px 0 20px; }
+        .category-title div { width: 4px; height: 25px; background: #00ff7f; margin-right: 12px; border-radius: 2px; }
+        .category-title h2 { font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; color: #fff; }
 
-        /* GRADE DE PRODUTOS */
+        /* GRADE DE PRODUTOS (ADAPTÁVEL) */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
         
-        .product-card { background: #111; border-radius: 15px; overflow: hidden; border: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; }
-        .product-card:hover { border-color: #00ff7f; transform: translateY(-5px); }
-        .product-card img { width: 100%; height: 130px; object-fit: cover; }
+        .product-card { background: #111; border-radius: 12px; overflow: hidden; border: 1px solid #222; display: flex; flex-direction: column; }
+        .product-card img { width: 100%; height: 120px; object-fit: cover; background: #222; }
         
         .product-info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .product-info h3 { font-size: 1rem; margin-bottom: 5px; }
-        .product-info p { font-size: 0.75rem; color: #777; margin-bottom: 10px; }
+        .product-info h3 { font-size: 0.95rem; margin-bottom: 5px; color: #fff; }
+        .product-info p { font-size: 0.75rem; color: #777; margin-bottom: 12px; line-height: 1.2; }
         
         .price-row { display: flex; justify-content: space-between; align-items: center; }
-        .price-row .price { color: #00ff7f; font-weight: bold; font-size: 1.1rem; }
-        .add-btn { background: #00ff7f; border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        .add-btn:active { transform: scale(0.9); }
+        .price-row .price { color: #00ff7f; font-weight: bold; font-size: 1rem; }
+        
+        /* BOTÃO ADICIONAR */
+        .add-btn { background: #00ff7f; border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
 
-        /* CARRINHO FLUTUANTE */
-        #cart-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 500px; background: #00ff7f; color: #000; padding: 15px 25px; border-radius: 50px; display: none; justify-content: space-between; align-items: center; font-weight: bold; box-shadow: 0 10px 30px rgba(0, 255, 127, 0.4); z-index: 2000; cursor: pointer; }
+        /* BARRA DO CARRINHO (WHATSAPP) */
+        #cart-bar { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: #00ff7f; color: #000; padding: 15px 25px; border-radius: 40px; display: none; justify-content: space-between; align-items: center; font-weight: bold; box-shadow: 0 8px 25px rgba(0, 255, 127, 0.4); z-index: 2000; text-decoration: none; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>PJ STUDIO BURGER</h1>
-        <p>O sabor premium na palma da sua mão</p>
+        <p>Design moderno para o seu paladar</p>
     </header>
 
     <nav>
@@ -60,118 +63,4 @@
     <div class="container">
         
         <section id="lanches">
-            <div class="section-title"><div></div><h2>Lanches Artesanais</h2></div>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="img/burger-demo.jpg" alt="Burger">
-                    <div class="product-info">
-                        <h3>X-PJ Studio</h3>
-                        <p>Pão brioche, blend 160g, muito queijo e bacon.</p>
-                        <div class="price-row">
-                            <span class="price">R$ 32,90</span>
-                            <button class="add-btn" onclick="addToCart('X-PJ Studio', 32.90)">+</button>
-                        </div>
-                    </div>
-                </div>
-                </div>
-        </section>
-
-        <section id="adicionais">
-            <div class="section-title"><div></div><h2>Turbine seu Pedido</h2></div>
-            <div class="product-grid">
-                
-                <div class="product-card">
-                    <img src="img/molhos-generico.jpg" alt="Molho">
-                    <div class="product-info">
-                        <h3>Molho Verde</h3>
-                        <p>Copo 30ml - Receita da casa.</p>
-                        <div class="price-row">
-                            <span class="price">R$ 2,50</span>
-                            <button class="add-btn" onclick="addToCart('Molho Verde', 2.50)">+</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="img/molhos-generico.jpg" alt="Molho">
-                    <div class="product-info">
-                        <h3>Molho do Chef</h3>
-                        <p>Copo 30ml - Segredo especial.</p>
-                        <div class="price-row">
-                            <span class="price">R$ 3,00</span>
-                            <button class="add-btn" onclick="addToCart('Molho do Chef', 3.00)">+</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="img/molhos-generico.jpg" alt="Bacon">
-                    <div class="product-info">
-                        <h3>Bacon Extra</h3>
-                        <p>Fatias crocantes adicionais.</p>
-                        <div class="price-row">
-                            <span class="price">R$ 5,00</span>
-                            <button class="add-btn" onclick="addToCart('Bacon Extra', 5.00)">+</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="bebidas">
-            <div class="section-title"><div></div><h2>Bebidas Geladas</h2></div>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="img/refris.jpg" alt="Bebida">
-                    <div class="product-info">
-                        <h3>Coca-Cola Lata</h3>
-                        <p>350ml geladinha.</p>
-                        <div class="price-row">
-                            <span class="price">R$ 6,00</span>
-                            <button class="add-btn" onclick="addToCart('Coca Lata', 6.00)">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <div id="cart-bar" onclick="sendWhatsApp()">
-        <span>Ver Pedido</span>
-        <span id="cart-total">R$ 0,00</span>
-    </div>
-
-    <script>
-        let cart = [];
-        let total = 0;
-
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            total += price;
-            
-            // Atualiza a barra do carrinho
-            const cartBar = document.getElementById('cart-bar');
-            const cartTotal = document.getElementById('cart-total');
-            
-            cartBar.style.display = 'flex';
-            cartTotal.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
-        }
-
-        function sendWhatsApp() {
-            let phoneNumber = "55XXXXXXXXXXX"; // COLOQUE SEU NUMERO AQUI
-            let message = "Novo Pedido - PJ Studio:\n\n";
-            
-            cart.forEach(item => {
-                message += `• ${item.name}: R$ ${item.price.toFixed(2)}\n`;
-            });
-            
-            message += `\n*Total: R$ ${total.toFixed(2)}*`;
-            
-            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
-    </script>
-</body>
-</html>
+            <div class="category-title"><div></div><h2>
