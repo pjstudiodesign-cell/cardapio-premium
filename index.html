@@ -40,7 +40,6 @@
         }
         .tab-btn.active { background: #ffcc00; color: #000; }
 
-        /* SEÇÕES DO MENU */
         .menu-section { display: none; width: 100%; max-width: 500px; }
         .menu-section.active { display: block; }
 
@@ -58,15 +57,16 @@
         .product-img { width: 75px; height: 75px; border-radius: 10px; object-fit: cover; background: #222; }
         .product-info { flex-grow: 1; }
         .product-info h3 { margin: 0; font-size: 1rem; color: #fff; }
-        .product-info p { margin: 4px 0; font-size: 0.75rem; color: #aaa; }
-        .product-price { color: #00ff7f; font-weight: bold; font-size: 1.1rem; }
-        .add-btn { background: #00ff7f; border: none; width: 35px; height: 35px; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000; font-size: 1.2rem; }
+        .product-info p { margin: 4px 0; font-size: 0.75rem; color: #aaa; line-height: 1.2; }
+        .product-price { color: #00ff7f; font-weight: bold; font-size: 1.1rem; margin-top: 5px; }
+        .add-btn { background: #00ff7f; border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000; font-size: 1.2rem; }
 
         .footer-area { width: 100%; max-width: 500px; margin-top: 20px; }
+        .delivery-msg { color: #ffcc00; text-align: center; font-size: 0.8rem; margin-bottom: 10px; font-weight: bold; }
         input { width: 100%; padding: 12px; margin-bottom: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid #444; border-radius: 8px; color: #fff; box-sizing: border-box; }
-        .total-box { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; font-weight: bold; }
+        .total-box { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; font-weight: bold; color: #fff; }
         .total-price { color: #00ff7f; font-size: 1.6rem; }
-        .send-btn { width: 100%; background: #00ff7f; color: #000; border: none; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; text-transform: uppercase; padding: 15px; }
+        .send-btn { width: 100%; background: #00ff7f; color: #000; border: none; padding: 15px; border-radius: 10px; font-weight: bold; font-size: 1.1rem; cursor: pointer; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -89,7 +89,7 @@
             <img src="foto1.jpg" class="product-img">
             <div class="product-info">
                 <h3>Combo PJ Classic</h3>
-                <p>Pão brioche, blend 180g, queijo e maionese artesanal.</p>
+                <p>Pão brioche, blend 180g, queijo cheddar, alface, tomate e maionese artesanal.</p>
                 <div class="product-price">R$ 35,00</div>
             </div>
             <button class="add-btn" onclick="addToCart('Combo PJ Classic', 35.00)">+</button>
@@ -98,7 +98,7 @@
             <img src="foto2.jpg" class="product-img">
             <div class="product-info">
                 <h3>PJ Salad Premium</h3>
-                <p>Blend bovino, muito queijo e molho especial.</p>
+                <p>Blend bovino, muito queijo prato, picles de cebola roxa e molho especial da casa.</p>
                 <div class="product-price">R$ 38,00</div>
             </div>
             <button class="add-btn" onclick="addToCart('PJ Salad Premium', 38.00)">+</button>
@@ -107,13 +107,22 @@
 
     <div id="bebidas" class="menu-section">
         <div class="product-card">
-            <img src="foto7.jpg" class="product-img">
+            <img src="foto5.jpg" class="product-img">
             <div class="product-info">
-                <h3>Coca-Cola Lata</h3>
-                <p>350ml gelada.</p>
-                <div class="product-price">R$ 6,00</div>
+                <h3>Drink PJ Tropical</h3>
+                <p>Uma explosão de sabores de frutas tropicais em um drink refrescante.</p>
+                <div class="product-price">R$ 22,00</div>
             </div>
-            <button class="add-btn" onclick="addToCart('Coca-Cola Lata', 6.00)">+</button>
+            <button class="add-btn" onclick="addToCart('Drink PJ Tropical', 22.00)">+</button>
+        </div>
+        <div class="product-card">
+            <img src="foto6.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Drink PJ Exótico</h3>
+                <p>Mistura única de sabores exóticos e refrescantes.</p>
+                <div class="product-price">R$ 25,00</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Drink PJ Exótico', 25.00)">+</button>
         </div>
     </div>
 
@@ -121,11 +130,29 @@
         <div class="product-card">
             <img src="foto3.jpg" class="product-img">
             <div class="product-info">
-                <h3>Sobremesa PJ</h3>
-                <p>Adoce o seu dia com nossa delícia.</p>
+                <h3>Sobremesa PJ Premium</h3>
+                <p>O toque doce exclusivo da casa. Delícia do pote.</p>
+                <div class="product-price">R$ 15,00</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Sobremesa PJ Premium', 15.00)">+</button>
+        </div>
+        <div class="product-card">
+            <img src="foto7.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Sobremesa PJ Tropical</h3>
+                <p>Delícia tropical no pote com frutas frescas.</p>
+                <div class="product-price">R$ 18,00</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Sobremesa PJ Tropical', 18.00)">+</button>
+        </div>
+        <div class="product-card">
+            <img src="foto8.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Torta PJ de Banana</h3>
+                <p>Torta artesanal de banana cremosa.</p>
                 <div class="product-price">R$ 12,00</div>
             </div>
-            <button class="add-btn" onclick="addToCart('Sobremesa PJ', 12.00)">+</button>
+            <button class="add-btn" onclick="addToCart('Torta PJ de Banana', 12.00)">+</button>
         </div>
     </div>
 
@@ -134,23 +161,33 @@
             <img src="foto4.jpg" class="product-img">
             <div class="product-info">
                 <h3>Molho Verde</h3>
-                <p>Copo 30ml - Caseiro.</p>
+                <p>Copo 30ml - Receita especial da casa.</p>
                 <div class="product-price">R$ 2,50</div>
             </div>
             <button class="add-btn" onclick="addToCart('Molho Verde', 2.50)">+</button>
         </div>
         <div class="product-card">
-            <img src="foto5.jpg" class="product-img">
+            <img src="foto4.jpg" class="product-img">
             <div class="product-info">
-                <h3>Molho do Chef</h3>
-                <p>Copo 30ml - Especial.</p>
+                <h3>Molho Especial do Chef</h3>
+                <p>Copo 30ml - Sabor inconfundível.</p>
                 <div class="product-price">R$ 3,00</div>
             </div>
-            <button class="add-btn" onclick="addToCart('Molho do Chef', 3.00)">+</button>
+            <button class="add-btn" onclick="addToCart('Molho Especial do Chef', 3.00)">+</button>
+        </div>
+        <div class="product-card">
+            <img src="foto4.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Maionese Caseira</h3>
+                <p>Copo 30ml - Feita na hora.</p>
+                <div class="product-price">R$ 2,00</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Maionese Caseira', 2.00)">+</button>
         </div>
     </div>
 
     <div class="footer-area">
+        <div class="delivery-msg">⚠️ Preencha os dados completos para entrega</div>
         <input type="text" id="nome-cliente" placeholder="Seu Nome">
         <input type="text" id="end-cliente" placeholder="Seu Endereço">
         
@@ -163,15 +200,15 @@
 </div>
 
 <script>
-    // FUNÇÃO DAS ABAS (CIRÚRGICA)
     function openTab(evt, tabName) {
-        let sections = document.getElementsByClassName("menu-section");
-        for (let i = 0; i < sections.length; i++) {
+        var i, sections, tablinks;
+        sections = document.getElementsByClassName("menu-section");
+        for (i = 0; i < sections.length; i++) {
             sections[i].style.display = "none";
             sections[i].classList.remove("active");
         }
-        let tablinks = document.getElementsByClassName("tab-btn");
-        for (let i = 0; i < tablinks.length; i++) {
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
             tablinks[i].classList.remove("active");
         }
         document.getElementById(tabName).style.display = "block";
@@ -179,7 +216,6 @@
         evt.currentTarget.classList.add("active");
     }
 
-    // LÓGICA DO CARRINHO (PRECISA E FUNCIONAL)
     let total = 0;
     let itensPedido = [];
 
@@ -196,7 +232,6 @@
         }
         const nome = document.getElementById('nome-cliente').value;
         const endereco = document.getElementById('end-cliente').value;
-        
         const texto = encodeURIComponent(`*PEDIDO PJ STUDIO*\n\n*Itens:* ${itensPedido.join(', ')}\n*Total:* R$ ${total.toFixed(2)}\n\n*Cliente:* ${nome}\n*Endereço:* ${endereco}`);
         window.open(`https://wa.me/55XXXXXXXXXXX?text=${texto}`);
     }
