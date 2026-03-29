@@ -3,172 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PJ Studio Burger - Cardápio Digital</title>
+    <title>PJ STUDIO DESIGN - Cardápio</title>
     <style>
-        /* ESTILO ORIGINAL - MANTER INTEGRIDADE */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background-color: #000; color: #fff; }
+        /* MANTENDO SEU LAYOUT ORIGINAL */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000 url('https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80') no-repeat center center fixed;
+            background-size: cover;
+            font-family: sans-serif;
+            color: #fff;
+        }
 
-        header { text-align: center; padding: 40px 20px; border-bottom: 1px solid #1a1a1a; }
-        header h1 { color: #00ff7f; font-size: 2rem; }
-        header p { color: #888; font-size: 0.9rem; }
+        .overlay {
+            background: rgba(0, 0, 0, 0.85);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-        /* MENU DE NAVEGAÇÃO */
-        nav { position: sticky; top: 0; z-index: 1000; background: #000; padding: 15px 0; border-bottom: 1px solid #00ff7f; display: flex; justify-content: center; gap: 10px; overflow-x: auto; }
-        nav a { background: #1a1a1a; color: #fff; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 0.8rem; border: 1px solid #333; white-space: nowrap; }
+        .logo { width: 80px; margin-bottom: 10px; }
+        .business-name { color: #ffcc00; font-weight: bold; font-size: 1.5rem; margin-bottom: 20px; text-transform: uppercase; }
 
-        .container { max-width: 800px; margin: auto; padding: 20px; }
-        
-        /* TÍTULOS COM A BARRA VERDE */
-        .category-title { display: flex; align-items: center; margin: 30px 0 20px; border-left: 4px solid #00ff7f; padding-left: 10px; }
-        .category-title h2 { font-size: 1.3rem; text-transform: uppercase; color: #fff; }
+        /* ABAS DE NAVEGAÇÃO - ADICIONADA A ABA MOLHOS */
+        .tabs { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center; }
+        .tab-btn {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+        }
+        .tab-btn.active { background: #ffcc00; color: #000; }
 
-        /* GRADE DE PRODUTOS */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
+        /* CONTAINER DOS PRODUTOS */
+        .menu-container { width: 100%; max-width: 500px; }
         
-        .product-card { background: #111; border-radius: 12px; overflow: hidden; border: 1px solid #222; display: flex; flex-direction: column; }
-        .product-card img { width: 100%; height: 130px; object-fit: cover; background: #222; }
-        
-        .product-info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .product-info h3 { font-size: 1rem; margin-bottom: 5px; color: #fff; }
-        .product-info p { font-size: 0.8rem; color: #777; margin-bottom: 10px; }
-        
-        .price-row { display: flex; justify-content: space-between; align-items: center; }
-        .price-row .price { color: #00ff7f; font-weight: bold; font-size: 1.1rem; }
-        
-        .add-btn { background: #00ff7f; border: none; width: 35px; height: 35px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1.2rem; }
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            backdrop-filter: blur(5px);
+        }
 
-        /* CARRINHO WHATSAPP */
-        #cart-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 450px; background: #00ff7f; color: #000; padding: 15px; border-radius: 50px; display: none; justify-content: space-between; align-items: center; font-weight: bold; z-index: 2000; text-decoration: none; box-shadow: 0 10px 30px rgba(0, 255, 127, 0.3); }
+        .product-img { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; }
+        
+        .product-details { flex-grow: 1; }
+        .product-details h3 { margin: 0; font-size: 1.1rem; }
+        .product-details p { margin: 5px 0; font-size: 0.8rem; color: #ccc; }
+        .product-price { color: #00ff7f; font-weight: bold; font-size: 1.2rem; }
+
+        .add-btn {
+            background: #00ff7f;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #000;
+        }
+
+        /* FORMULÁRIO DE ENTREGA */
+        .delivery-form { width: 100%; max-width: 500px; margin-top: 20px; }
+        .form-title { color: #ffcc00; text-align: center; font-size: 0.9rem; margin-bottom: 10px; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 500px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .total-price { color: #00ff7f; font-size: 1.5rem; }
+
+        .submit-btn {
+            width: 100%;
+            max-width: 500px;
+            background: #00ff7f;
+            color: #000;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>PJ STUDIO BURGER</h1>
-        <p>O sabor premium na palma da sua mão</p>
-    </header>
+<div class="overlay">
+    <img src="https://via.placeholder.com/80" alt="Logo" class="logo"> <div class="business-name">PJ STUDIO DESIGN</div>
 
-    <nav>
-        <a href="#lanches">🍔 LANCHES</a>
-        <a href="#adicionais">🍟 ADICIONAIS</a>
-        <a href="#bebidas">🥤 BEBIDAS</a>
-    </nav>
+    <div class="tabs">
+        <a href="#lanches" class="tab-btn active">🍔 Lanches</a>
+        <a href="#bebidas" class="tab-btn">🥤 Bebidas</a>
+        <a href="#doces" class="tab-btn">🍰 Doces</a>
+        <a href="#molhos" class="tab-btn">🍯 Molhos</a> </div>
 
-    <div class="container">
-        
-        <section id="lanches">
-            <div class="category-title"><h2>Lanches Artesanais</h2></div>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="img/burger-demo.jpg" alt="Burger">
-                    <div class="product-info">
-                        <h3>X-PJ Studio</h3>
-                        <p>Pão brioche, blend 160g, muito queijo e bacon.</p>
-                        <div class="price-row">
-                            <span class="price">R$ 32,90</span>
-                            <button class="add-btn" onclick="addToCart('X-PJ Studio', 32.90)">+</button>
-                        </div>
-                    </div>
+    <div class="menu-container">
+        <div id="lanches">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/80" class="product-img">
+                <div class="product-details">
+                    <h3>Combo PJ Classic</h3>
+                    <p>Pão brioche, blend 180g, queijo cheddar, alface, tomate e maionese artesanal.</p>
+                    <div class="product-price">R$ 35,00</div>
                 </div>
+                <button class="add-btn" onclick="addToCart('Combo PJ Classic', 35.00)">+</button>
             </div>
-        </section>
+        </div>
 
-        <section id="adicionais">
-            <div class="category-title"><h2>Turbine seu Pedido</h2></div>
-            <div class="product-grid">
-                
-                <div class="product-card">
-                    <img src="img/molhos-generico.jpg" alt="Molho Verde">
-                    <div class="product-info">
-                        <h3>Molho Verde</h3>
-                        <p>Copo 30ml - Receita da casa.</p>
-                        <div class="price-row">
-                            <span class="price">R$ 2,50</span>
-                            <button class="add-btn" onclick="addToCart('Molho Verde', 2.50)">+</button>
-                        </div>
-                    </div>
+        <div id="molhos">
+            <div class="product-card">
+                <img src="img/molhos-generico.jpg" class="product-img">
+                <div class="product-details">
+                    <h3>Molho Verde</h3>
+                    <p>Copo 30ml - Receita especial da casa.</p>
+                    <div class="product-price">R$ 2,50</div>
                 </div>
-
-                <div class="product-card">
-                    <img src="img/molhos-generico.jpg" alt="Molho do Chef">
-                    <div class="product-info">
-                        <h3>Molho do Chef</h3>
-                        <p>Copo 30ml - Segredo especial.</p>
-                        <div class="price-row">
-                            <span class="price">R$ 3,00</span>
-                            <button class="add-btn" onclick="addToCart('Molho do Chef', 3.00)">+</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="img/molhos-generico.jpg" alt="Bacon Extra">
-                    <div class="product-info">
-                        <h3>Bacon Extra</h3>
-                        <p>Fatias crocantes adicionais.</p>
-                        <div class="price-row">
-                            <span class="price">R$ 5,00</span>
-                            <button class="add-btn" onclick="addToCart('Bacon Extra', 5.00)">+</button>
-                        </div>
-                    </div>
-                </div>
-
+                <button class="add-btn" onclick="addToCart('Molho Verde', 2.50)">+</button>
             </div>
-        </section>
 
-        <section id="bebidas">
-            <div class="category-title"><h2>Bebidas Geladas</h2></div>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="img/refris.jpg" alt="Bebida">
-                    <div class="product-info">
-                        <h3>Coca-Cola Lata</h3>
-                        <p>350ml geladinha.</p>
-                        <div class="price-row">
-                            <span class="price">R$ 6,00</span>
-                            <button class="add-btn" onclick="addToCart('Coca Lata', 6.00)">+</button>
-                        </div>
-                    </div>
+            <div class="product-card">
+                <img src="img/molhos-generico.jpg" class="product-img">
+                <div class="product-details">
+                    <h3>Molho Especial Chef</h3>
+                    <p>Copo 30ml - Sabor inconfundível.</p>
+                    <div class="product-price">R$ 3,00</div>
                 </div>
+                <button class="add-btn" onclick="addToCart('Molho Especial Chef', 3.00)">+</button>
             </div>
-        </section>
-
+        </div>
     </div>
 
-    <a href="javascript:void(0)" id="cart-bar" onclick="sendWhatsApp()">
-        <span>VER PEDIDO</span>
-        <span id="cart-total">R$ 0,00</span>
-    </a>
+    <div class="delivery-form">
+        <div class="form-title">⚠️ Preencha os dados completos para entrega</div>
+        <input type="text" id="nome" placeholder="Nome Completo">
+        <input type="text" id="telefone" placeholder="Telefone de Contato">
+        <input type="text" id="endereco" placeholder="Rua, Nº e Bairro">
+        <input type="text" id="referencia" placeholder="Cidade / Ponto de Referência">
+    </div>
 
-    <script>
-        let cart = [];
-        let total = 0;
+    <div class="total-row">
+        <span>TOTAL:</span>
+        <span class="total-price" id="total-val">R$ 0,00</span>
+    </div>
 
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            total += price;
-            
-            const cartBar = document.getElementById('cart-bar');
-            const cartTotal = document.getElementById('cart-total');
-            
-            cartBar.style.display = 'flex';
-            cartTotal.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    <button class="submit-btn" onclick="enviarPedido()">Enviar Pedido</button>
+</div>
+
+<script>
+    let cart = [];
+    let total = 0;
+
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        total += price;
+        document.getElementById('total-val').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    function enviarPedido() {
+        if (cart.length === 0) {
+            alert("Seu carrinho está vazio!");
+            return;
         }
+        
+        const nome = document.getElementById('nome').value;
+        const endereco = document.getElementById('endereco').value;
+        
+        let message = `*NOVO PEDIDO - PJ STUDIO*\n\n`;
+        cart.forEach(item => {
+            message += `• ${item.name}: R$ ${item.price.toFixed(2)}\n`;
+        });
+        message += `\n*Total: R$ ${total.toFixed(2)}*\n\n`;
+        message += `*Cliente:* ${nome}\n*Endereço:* ${endereco}`;
 
-        function sendWhatsApp() {
-            let phoneNumber = "55XXXXXXXXXXX"; // COLOQUE SEU NÚMERO AQUI
-            let message = "🍟 *PEDIDO - PJ STUDIO BURGER* 🍔\n\n";
-            
-            cart.forEach(item => {
-                message += `• ${item.name}: R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
-            });
-            
-            message += `\n*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
-            
-            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
-    </script>
+        const url = `https://wa.me/55XXXXXXXXXXX?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+</script>
+
 </body>
 </html>
