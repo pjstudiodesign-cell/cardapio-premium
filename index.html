@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PJ STUDIO DESIGN - Cardápio</title>
+    <title>PJ STUDIO DESIGN</title>
     <style>
-        /* MANTENDO SEU LAYOUT ORIGINAL */
+        /* ESTILO ORIGINAL PRESERVADO */
         body {
             margin: 0;
             padding: 0;
             background: #000 url('https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80') no-repeat center center fixed;
             background-size: cover;
             font-family: sans-serif;
-            color: #fff;
         }
 
         .overlay {
@@ -24,190 +23,176 @@
             align-items: center;
         }
 
-        .logo { width: 80px; margin-bottom: 10px; }
-        .business-name { color: #ffcc00; font-weight: bold; font-size: 1.5rem; margin-bottom: 20px; text-transform: uppercase; }
+        .logo-area { text-align: center; margin-bottom: 20px; }
+        .logo-area img { width: 60px; }
+        .business-name { color: #ffcc00; font-weight: bold; font-size: 1.4rem; text-transform: uppercase; margin-top: 5px; }
 
-        /* ABAS DE NAVEGAÇÃO - ADICIONADA A ABA MOLHOS */
-        .tabs { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center; }
+        /* ABAS DE NAVEGAÇÃO */
+        .tabs { display: flex; gap: 8px; margin-bottom: 25px; overflow-x: auto; width: 100%; max-width: 500px; padding-bottom: 5px; }
         .tab-btn {
-            background: #333;
+            background: #2a2a2a;
             color: #fff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 10px 18px;
+            border-radius: 25px;
             cursor: pointer;
             font-weight: bold;
+            white-space: nowrap;
             display: flex;
             align-items: center;
             gap: 5px;
-            text-decoration: none;
         }
         .tab-btn.active { background: #ffcc00; color: #000; }
 
-        /* CONTAINER DOS PRODUTOS */
-        .menu-container { width: 100%; max-width: 500px; }
-        
+        /* CONTROLE DE EXIBIÇÃO DAS SEÇÕES */
+        .menu-section { display: none; width: 100%; max-width: 500px; }
+        .menu-section.active { display: block; }
+
+        /* CARD DE PRODUTO */
         .product-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 15px;
+            padding: 12px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            backdrop-filter: blur(5px);
+            gap: 12px;
         }
+        .product-img { width: 70px; height: 70px; border-radius: 10px; background: #333; object-fit: cover; }
+        .product-info { flex-grow: 1; }
+        .product-info h3 { margin: 0; font-size: 1rem; color: #fff; }
+        .product-info p { margin: 4px 0; font-size: 0.75rem; color: #aaa; line-height: 1.2; }
+        .product-price { color: #00ff7f; font-weight: bold; font-size: 1.1rem; margin-top: 5px; }
+        .add-btn { background: #00ff7f; border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000; }
 
-        .product-img { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; }
-        
-        .product-details { flex-grow: 1; }
-        .product-details h3 { margin: 0; font-size: 1.1rem; }
-        .product-details p { margin: 5px 0; font-size: 0.8rem; color: #ccc; }
-        .product-price { color: #00ff7f; font-weight: bold; font-size: 1.2rem; }
-
-        .add-btn {
-            background: #00ff7f;
-            border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1.5rem;
-            color: #000;
-        }
-
-        /* FORMULÁRIO DE ENTREGA */
-        .delivery-form { width: 100%; max-width: 500px; margin-top: 20px; }
-        .form-title { color: #ffcc00; text-align: center; font-size: 0.9rem; margin-bottom: 10px; }
-        input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid #333;
-            border-radius: 8px;
-            color: #fff;
-            box-sizing: border-box;
-        }
-
-        .total-row {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 500px;
-            margin: 20px 0;
-            font-weight: bold;
-        }
-        .total-price { color: #00ff7f; font-size: 1.5rem; }
-
-        .submit-btn {
-            width: 100%;
-            max-width: 500px;
-            background: #00ff7f;
-            color: #000;
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
+        /* FORMULÁRIO E TOTAIS */
+        .footer-area { width: 100%; max-width: 500px; margin-top: 20px; }
+        .delivery-msg { color: #ffcc00; text-align: center; font-size: 0.8rem; margin-bottom: 10px; }
+        input { width: 100%; padding: 12px; margin-bottom: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid #444; border-radius: 8px; color: #fff; box-sizing: border-box; }
+        .total-box { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; font-weight: bold; }
+        .total-price { color: #00ff7f; font-size: 1.4rem; }
+        .send-btn { width: 100%; background: #00ff7f; color: #000; border: none; padding: 15px; border-radius: 10px; font-weight: bold; font-size: 1.1rem; cursor: pointer; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
 <div class="overlay">
-    <img src="https://via.placeholder.com/80" alt="Logo" class="logo"> <div class="business-name">PJ STUDIO DESIGN</div>
+    <div class="logo-area">
+        <img src="img/logo.png" alt="Logo">
+        <div class="business-name">PJ STUDIO DESIGN</div>
+    </div>
 
     <div class="tabs">
-        <a href="#lanches" class="tab-btn active">🍔 Lanches</a>
-        <a href="#bebidas" class="tab-btn">🥤 Bebidas</a>
-        <a href="#doces" class="tab-btn">🍰 Doces</a>
-        <a href="#molhos" class="tab-btn">🍯 Molhos</a> </div>
+        <button class="tab-btn active" onclick="openTab(event, 'lanches')">🍔 Lanches</button>
+        <button class="tab-btn" onclick="openTab(event, 'bebidas')">🥤 Bebidas</button>
+        <button class="tab-btn" onclick="openTab(event, 'doces')">🍰 Doces</button>
+        <button class="tab-btn" onclick="openTab(event, 'molhos')">🍯 Molhos</button>
+    </div>
 
-    <div class="menu-container">
-        <div id="lanches">
-            <div class="product-card">
-                <img src="https://via.placeholder.com/80" class="product-img">
-                <div class="product-details">
-                    <h3>Combo PJ Classic</h3>
-                    <p>Pão brioche, blend 180g, queijo cheddar, alface, tomate e maionese artesanal.</p>
-                    <div class="product-price">R$ 35,00</div>
-                </div>
-                <button class="add-btn" onclick="addToCart('Combo PJ Classic', 35.00)">+</button>
+    <div id="lanches" class="menu-section active">
+        <div class="product-card">
+            <img src="img/burger.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Combo PJ Classic</h3>
+                <p>Pão brioche, blend 180g, queijo cheddar, alface, tomate e maionese artesanal.</p>
+                <div class="product-price">R$ 35,00</div>
             </div>
+            <button class="add-btn" onclick="addToCart('Combo PJ Classic', 35.00)">+</button>
+        </div>
         </div>
 
-        <div id="molhos">
-            <div class="product-card">
-                <img src="img/molhos-generico.jpg" class="product-img">
-                <div class="product-details">
-                    <h3>Molho Verde</h3>
-                    <p>Copo 30ml - Receita especial da casa.</p>
-                    <div class="product-price">R$ 2,50</div>
-                </div>
-                <button class="add-btn" onclick="addToCart('Molho Verde', 2.50)">+</button>
+    <div id="bebidas" class="menu-section">
+        <div class="product-card">
+            <img src="img/coca.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Coca-Cola Lata</h3>
+                <p>350ml trincando de gelada.</p>
+                <div class="product-price">R$ 6,00</div>
             </div>
-
-            <div class="product-card">
-                <img src="img/molhos-generico.jpg" class="product-img">
-                <div class="product-details">
-                    <h3>Molho Especial Chef</h3>
-                    <p>Copo 30ml - Sabor inconfundível.</p>
-                    <div class="product-price">R$ 3,00</div>
-                </div>
-                <button class="add-btn" onclick="addToCart('Molho Especial Chef', 3.00)">+</button>
-            </div>
+            <button class="add-btn" onclick="addToCart('Coca-Cola', 6.00)">+</button>
         </div>
     </div>
 
-    <div class="delivery-form">
-        <div class="form-title">⚠️ Preencha os dados completos para entrega</div>
+    <div id="doces" class="menu-section">
+        <div class="product-card">
+            <img src="img/doce.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Sobremesa PJ</h3>
+                <p>Doce especial da casa.</p>
+                <div class="product-price">R$ 12,00</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Doce', 12.00)">+</button>
+        </div>
+    </div>
+
+    <div id="molhos" class="menu-section">
+        <div class="product-card">
+            <img src="img/molhos-generico.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Molho Verde</h3>
+                <p>Copo 30ml - Receita especial da casa.</p>
+                <div class="product-price">R$ 2,50</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Molho Verde', 2.50)">+</button>
+        </div>
+        <div class="product-card">
+            <img src="img/molhos-generico.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Molho Especial Chef</h3>
+                <p>Copo 30ml - Sabor inconfundível.</p>
+                <div class="product-price">R$ 3,00</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Molho Especial Chef', 3.00)">+</button>
+        </div>
+    </div>
+
+    <div class="footer-area">
+        <div class="delivery-msg">⚠️ Preencha os dados completos para entrega</div>
         <input type="text" id="nome" placeholder="Nome Completo">
-        <input type="text" id="telefone" placeholder="Telefone de Contato">
-        <input type="text" id="endereco" placeholder="Rua, Nº e Bairro">
-        <input type="text" id="referencia" placeholder="Cidade / Ponto de Referência">
-    </div>
+        <input type="text" id="tel" placeholder="Telefone de Contato">
+        <input type="text" id="rua" placeholder="Rua, Nº e Bairro">
+        <input type="text" id="ref" placeholder="Cidade / Ponto de Referência">
 
-    <div class="total-row">
-        <span>TOTAL:</span>
-        <span class="total-price" id="total-val">R$ 0,00</span>
-    </div>
+        <div class="total-box">
+            <span>TOTAL:</span>
+            <span class="total-price" id="total-val">R$ 0,00</span>
+        </div>
 
-    <button class="submit-btn" onclick="enviarPedido()">Enviar Pedido</button>
+        <button class="send-btn" onclick="finalizarPedido()">Enviar Pedido</button>
+    </div>
 </div>
 
 <script>
-    let cart = [];
-    let total = 0;
+    // FUNÇÃO PARA TROCAR AS ABAS (CIRÚRGICA)
+    function openTab(evt, tabName) {
+        var i, sections, tablinks;
+        sections = document.getElementsByClassName("menu-section");
+        for (i = 0; i < sections.length; i++) {
+            sections[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
 
-    function addToCart(name, price) {
-        cart.push({ name, price });
-        total += price;
+    let total = 0;
+    let itens = [];
+
+    function addToCart(nome, preco) {
+        total += preco;
+        itens.push(nome);
         document.getElementById('total-val').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
     }
 
-    function enviarPedido() {
-        if (cart.length === 0) {
-            alert("Seu carrinho está vazio!");
-            return;
-        }
-        
+    function finalizarPedido() {
+        if(total === 0) { alert("Adicione itens ao pedido!"); return; }
         const nome = document.getElementById('nome').value;
-        const endereco = document.getElementById('endereco').value;
-        
-        let message = `*NOVO PEDIDO - PJ STUDIO*\n\n`;
-        cart.forEach(item => {
-            message += `• ${item.name}: R$ ${item.price.toFixed(2)}\n`;
-        });
-        message += `\n*Total: R$ ${total.toFixed(2)}*\n\n`;
-        message += `*Cliente:* ${nome}\n*Endereço:* ${endereco}`;
-
-        const url = `https://wa.me/55XXXXXXXXXXX?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
+        const msg = encodeURIComponent(`*Pedido PJ Studio*\nItem: ${itens.join(', ')}\nTotal: R$ ${total.toFixed(2)}\nCliente: ${nome}`);
+        window.open(`https://wa.me/55XXXXXXXXXXX?text=${msg}`);
     }
 </script>
 
