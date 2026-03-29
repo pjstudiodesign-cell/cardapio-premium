@@ -40,6 +40,7 @@
         }
         .tab-btn.active { background: #ffcc00; color: #000; }
 
+        /* SEÇÕES DO MENU */
         .menu-section { display: none; width: 100%; max-width: 500px; }
         .menu-section.active { display: block; }
 
@@ -59,13 +60,13 @@
         .product-info h3 { margin: 0; font-size: 1rem; color: #fff; }
         .product-info p { margin: 4px 0; font-size: 0.75rem; color: #aaa; }
         .product-price { color: #00ff7f; font-weight: bold; font-size: 1.1rem; }
-        .add-btn { background: #00ff7f; border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000; }
+        .add-btn { background: #00ff7f; border: none; width: 35px; height: 35px; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000; font-size: 1.2rem; }
 
         .footer-area { width: 100%; max-width: 500px; margin-top: 20px; }
         input { width: 100%; padding: 12px; margin-bottom: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid #444; border-radius: 8px; color: #fff; box-sizing: border-box; }
-        .total-box { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; }
-        .total-price { color: #00ff7f; font-size: 1.6rem; font-weight: bold; }
-        .send-btn { width: 100%; background: #00ff7f; color: #000; border: none; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        .total-box { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; font-weight: bold; }
+        .total-price { color: #00ff7f; font-size: 1.6rem; }
+        .send-btn { width: 100%; background: #00ff7f; color: #000; border: none; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; text-transform: uppercase; padding: 15px; }
     </style>
 </head>
 <body>
@@ -79,7 +80,7 @@
     <div class="tabs">
         <button class="tab-btn active" onclick="openTab(event, 'lanches')">🍔 Lanches</button>
         <button class="tab-btn" onclick="openTab(event, 'bebidas')">🥤 Bebidas</button>
-        <button class="tab-btn" onclick="openTab(event, 'doces')">🍰 Doces</button>
+        <button class="tab-btn" onclick="openTab(event, 'sobremesas')">🍰 Sobremesas</button>
         <button class="tab-btn" onclick="openTab(event, 'molhos')">🍯 Molhos</button>
     </div>
 
@@ -88,10 +89,10 @@
             <img src="foto1.jpg" class="product-img">
             <div class="product-info">
                 <h3>Combo PJ Classic</h3>
-                <p>Pão brioche, blend 180g e maionese artesanal.</p>
+                <p>Pão brioche, blend 180g, queijo e maionese artesanal.</p>
                 <div class="product-price">R$ 35,00</div>
             </div>
-            <button class="add-btn" onclick="addToCart('Combo PJ Classic', 35)">+</button>
+            <button class="add-btn" onclick="addToCart('Combo PJ Classic', 35.00)">+</button>
         </div>
         <div class="product-card">
             <img src="foto2.jpg" class="product-img">
@@ -100,7 +101,7 @@
                 <p>Blend bovino, muito queijo e molho especial.</p>
                 <div class="product-price">R$ 38,00</div>
             </div>
-            <button class="add-btn" onclick="addToCart('PJ Salad Premium', 38)">+</button>
+            <button class="add-btn" onclick="addToCart('PJ Salad Premium', 38.00)">+</button>
         </div>
     </div>
 
@@ -109,22 +110,22 @@
             <img src="foto7.jpg" class="product-img">
             <div class="product-info">
                 <h3>Coca-Cola Lata</h3>
-                <p>350ml geladinha.</p>
+                <p>350ml gelada.</p>
                 <div class="product-price">R$ 6,00</div>
             </div>
-            <button class="add-btn" onclick="addToCart('Coca-Cola', 6)">+</button>
+            <button class="add-btn" onclick="addToCart('Coca-Cola Lata', 6.00)">+</button>
         </div>
     </div>
 
-    <div id="doces" class="menu-section">
+    <div id="sobremesas" class="menu-section">
         <div class="product-card">
             <img src="foto3.jpg" class="product-img">
             <div class="product-info">
                 <h3>Sobremesa PJ</h3>
-                <p>Delícia exclusiva no pote.</p>
+                <p>Adoce o seu dia com nossa delícia.</p>
                 <div class="product-price">R$ 12,00</div>
             </div>
-            <button class="add-btn" onclick="addToCart('Sobremesa PJ', 12)">+</button>
+            <button class="add-btn" onclick="addToCart('Sobremesa PJ', 12.00)">+</button>
         </div>
     </div>
 
@@ -133,41 +134,73 @@
             <img src="foto4.jpg" class="product-img">
             <div class="product-info">
                 <h3>Molho Verde</h3>
-                <p>Copo 30ml - Receita da casa.</p>
+                <p>Copo 30ml - Caseiro.</p>
                 <div class="product-price">R$ 2,50</div>
             </div>
-            <button class="add-btn" onclick="addToCart('Molho Verde', 2.5)">+</button>
+            <button class="add-btn" onclick="addToCart('Molho Verde', 2.50)">+</button>
         </div>
         <div class="product-card">
             <img src="foto5.jpg" class="product-img">
             <div class="product-info">
                 <h3>Molho do Chef</h3>
-                <p>Copo 30ml - Segredo especial.</p>
+                <p>Copo 30ml - Especial.</p>
                 <div class="product-price">R$ 3,00</div>
             </div>
-            <button class="add-btn" onclick="addToCart('Molho do Chef', 3)">+</button>
+            <button class="add-btn" onclick="addToCart('Molho do Chef', 3.00)">+</button>
         </div>
     </div>
 
     <div class="footer-area">
-        <input type="text" id="nome" placeholder="Seu Nome">
-        <input type="text" id="rua" placeholder="Endereço de Entrega">
+        <input type="text" id="nome-cliente" placeholder="Seu Nome">
+        <input type="text" id="end-cliente" placeholder="Seu Endereço">
+        
         <div class="total-box">
-            <span>TOTAL:</span>
+            <span>TOTAL DO PEDIDO:</span>
             <span class="total-price" id="total-val">R$ 0,00</span>
         </div>
-        <button class="send-btn" onclick="finalizarPedido()">Enviar Pedido</button>
+        <button class="send-btn" onclick="finalizarPedido()">Finalizar e Enviar via WhatsApp</button>
     </div>
 </div>
 
 <script>
+    // FUNÇÃO DAS ABAS (CIRÚRGICA)
     function openTab(evt, tabName) {
         let sections = document.getElementsByClassName("menu-section");
-        for (let i = 0; i < sections.length; i++) { sections[i].style.display = "none"; }
+        for (let i = 0; i < sections.length; i++) {
+            sections[i].style.display = "none";
+            sections[i].classList.remove("active");
+        }
         let tablinks = document.getElementsByClassName("tab-btn");
-        for (let i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
+        for (let i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
         document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
     }
 
-    let total = 0
+    // LÓGICA DO CARRINHO (PRECISA E FUNCIONAL)
+    let total = 0;
+    let itensPedido = [];
+
+    function addToCart(nome, preco) {
+        total += preco;
+        itensPedido.push(nome);
+        document.getElementById('total-val').innerText = "R$ " + total.toFixed(2).replace('.', ',');
+    }
+
+    function finalizarPedido() {
+        if(total === 0) {
+            alert("Por favor, adicione pelo menos um item ao seu pedido.");
+            return;
+        }
+        const nome = document.getElementById('nome-cliente').value;
+        const endereco = document.getElementById('end-cliente').value;
+        
+        const texto = encodeURIComponent(`*PEDIDO PJ STUDIO*\n\n*Itens:* ${itensPedido.join(', ')}\n*Total:* R$ ${total.toFixed(2)}\n\n*Cliente:* ${nome}\n*Endereço:* ${endereco}`);
+        window.open(`https://wa.me/55XXXXXXXXXXX?text=${texto}`);
+    }
+</script>
+
+</body>
+</html>
