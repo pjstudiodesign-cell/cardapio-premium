@@ -11,6 +11,7 @@
             background: #000 url('pjstudio.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: sans-serif;
+            color: #fff;
         }
 
         .overlay {
@@ -23,7 +24,7 @@
         }
 
         .logo-area { text-align: center; margin-bottom: 20px; }
-        .logo-area img { width: 80px; border-radius: 10px; }
+        .logo-area img { width: 80px; border-radius: 10px; border: 2px solid #ffcc00; }
         .business-name { color: #ffcc00; font-weight: bold; font-size: 1.4rem; text-transform: uppercase; margin-top: 5px; }
 
         .tabs { display: flex; gap: 8px; margin-bottom: 25px; overflow-x: auto; width: 100%; max-width: 500px; padding-bottom: 5px; }
@@ -36,9 +37,6 @@
             cursor: pointer;
             font-weight: bold;
             white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
         .tab-btn.active { background: #ffcc00; color: #000; }
 
@@ -59,16 +57,15 @@
         .product-img { width: 75px; height: 75px; border-radius: 10px; object-fit: cover; background: #222; }
         .product-info { flex-grow: 1; }
         .product-info h3 { margin: 0; font-size: 1rem; color: #fff; }
-        .product-info p { margin: 4px 0; font-size: 0.75rem; color: #aaa; line-height: 1.2; }
-        .product-price { color: #00ff7f; font-weight: bold; font-size: 1.1rem; margin-top: 5px; }
-        .add-btn { background: #00ff7f; border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000; font-size: 1.2rem; }
+        .product-info p { margin: 4px 0; font-size: 0.75rem; color: #aaa; }
+        .product-price { color: #00ff7f; font-weight: bold; font-size: 1.1rem; }
+        .add-btn { background: #00ff7f; border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000; }
 
         .footer-area { width: 100%; max-width: 500px; margin-top: 20px; }
-        .delivery-msg { color: #ffcc00; text-align: center; font-size: 0.8rem; margin-bottom: 10px; font-weight: bold; }
         input { width: 100%; padding: 12px; margin-bottom: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid #444; border-radius: 8px; color: #fff; box-sizing: border-box; }
-        .total-box { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; font-weight: bold; color: #fff; }
-        .total-price { color: #00ff7f; font-size: 1.6rem; }
-        .send-btn { width: 100%; background: #00ff7f; color: #000; border: none; padding: 15px; border-radius: 10px; font-weight: bold; font-size: 1.1rem; cursor: pointer; text-transform: uppercase; }
+        .total-box { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; }
+        .total-price { color: #00ff7f; font-size: 1.6rem; font-weight: bold; }
+        .send-btn { width: 100%; background: #00ff7f; color: #000; border: none; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -91,19 +88,19 @@
             <img src="foto1.jpg" class="product-img">
             <div class="product-info">
                 <h3>Combo PJ Classic</h3>
-                <p>Pão brioche, blend 180g, queijo cheddar, alface, tomate e maionese artesanal.</p>
+                <p>Pão brioche, blend 180g e maionese artesanal.</p>
                 <div class="product-price">R$ 35,00</div>
             </div>
-            <button class="add-btn" onclick="addToCart('Combo PJ Classic', 35.00)">+</button>
+            <button class="add-btn" onclick="addToCart('Combo PJ Classic', 35)">+</button>
         </div>
         <div class="product-card">
             <img src="foto2.jpg" class="product-img">
             <div class="product-info">
                 <h3>PJ Salad Premium</h3>
-                <p>Blend bovino, muito queijo prato, picles de cebola roxa e molho especial.</p>
+                <p>Blend bovino, muito queijo e molho especial.</p>
                 <div class="product-price">R$ 38,00</div>
             </div>
-            <button class="add-btn" onclick="addToCart('PJ Salad Premium', 38.00)">+</button>
+            <button class="add-btn" onclick="addToCart('PJ Salad Premium', 38)">+</button>
         </div>
     </div>
 
@@ -115,9 +112,62 @@
                 <p>350ml geladinha.</p>
                 <div class="product-price">R$ 6,00</div>
             </div>
-            <button class="add-btn" onclick="addToCart('Coca-Cola Lata', 6.00)">+</button>
+            <button class="add-btn" onclick="addToCart('Coca-Cola', 6)">+</button>
         </div>
     </div>
 
     <div id="doces" class="menu-section">
-        <div class="product-card
+        <div class="product-card">
+            <img src="foto3.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Sobremesa PJ</h3>
+                <p>Delícia exclusiva no pote.</p>
+                <div class="product-price">R$ 12,00</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Sobremesa PJ', 12)">+</button>
+        </div>
+    </div>
+
+    <div id="molhos" class="menu-section">
+        <div class="product-card">
+            <img src="foto4.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Molho Verde</h3>
+                <p>Copo 30ml - Receita da casa.</p>
+                <div class="product-price">R$ 2,50</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Molho Verde', 2.5)">+</button>
+        </div>
+        <div class="product-card">
+            <img src="foto5.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Molho do Chef</h3>
+                <p>Copo 30ml - Segredo especial.</p>
+                <div class="product-price">R$ 3,00</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Molho do Chef', 3)">+</button>
+        </div>
+    </div>
+
+    <div class="footer-area">
+        <input type="text" id="nome" placeholder="Seu Nome">
+        <input type="text" id="rua" placeholder="Endereço de Entrega">
+        <div class="total-box">
+            <span>TOTAL:</span>
+            <span class="total-price" id="total-val">R$ 0,00</span>
+        </div>
+        <button class="send-btn" onclick="finalizarPedido()">Enviar Pedido</button>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        let sections = document.getElementsByClassName("menu-section");
+        for (let i = 0; i < sections.length; i++) { sections[i].style.display = "none"; }
+        let tablinks = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+
+    let total = 0
