@@ -27,7 +27,6 @@
         .logo-area img { width: 80px; border-radius: 10px; border: 2px solid #ffcc00; }
         .business-name { color: #ffcc00; font-weight: bold; font-size: 1.4rem; text-transform: uppercase; margin-top: 5px; }
 
-        /* AJUSTE CIRÚRGICO NAS TABS PARA NÃO CORTAR O TEXTO */
         .tabs { 
             display: flex; 
             gap: 8px; 
@@ -36,9 +35,9 @@
             width: 100%; 
             max-width: 500px; 
             padding: 5px 0;
-            scrollbar-width: none; /* Esconde scroll no Firefox */
+            scrollbar-width: none;
         }
-        .tabs::-webkit-scrollbar { display: none; } /* Esconde scroll no Chrome/Safari */
+        .tabs::-webkit-scrollbar { display: none; }
 
         .tab-btn {
             background: #2a2a2a;
@@ -48,8 +47,8 @@
             border-radius: 25px;
             cursor: pointer;
             font-weight: bold;
-            white-space: nowrap; /* Garante que o texto fique em uma linha */
-            flex-shrink: 0; /* Impede o botão de espremer o texto */
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         .tab-btn.active { background: #ffcc00; color: #000; }
 
@@ -93,7 +92,7 @@
         <button class="tab-btn active" onclick="openTab(event, 'lanches')">🍔 Lanches</button>
         <button class="tab-btn" onclick="openTab(event, 'bebidas')">🥤 Bebidas</button>
         <button class="tab-btn" onclick="openTab(event, 'sobremesas')">🍰 Sobremesas</button>
-        <button class="tab-btn" onclick="openTab(event, 'adicionais')">➕ Itens Adicionais</button>
+        <button class="tab-btn" onclick="openTab(event, 'adicionais')">➕ Adicionais</button>
     </div>
 
     <div id="lanches" class="menu-section active">
