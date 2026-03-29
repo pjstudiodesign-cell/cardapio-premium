@@ -182,4 +182,76 @@
             <div class="product-info">
                 <h3>Maionese Temperada</h3>
                 <p>Porção extra de maionese com ervas finas.</p>
-                <div
+                <div class="product-price">R$ 2,50</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Maionese Temperada', 2.50)">+</button>
+        </div>
+        <div class="product-card">
+            <img src="foto8.jpg" class="product-img">
+            <div class="product-info">
+                <h3>Ketchup Artesanal</h3>
+                <p>Receita exclusiva da casa.</p>
+                <div class="product-price">R$ 2,00</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Ketchup Artesanal', 2.00)">+</button>
+        </div>
+    </div>
+
+    <div class="footer-area">
+        <input type="text" id="nome-cliente" placeholder="Seu Nome">
+        <input type="text" id="contato-cliente" placeholder="Seu Contato (WhatsApp)">
+        <input type="text" id="end-cliente" placeholder="Seu Endereço">
+        <input type="text" id="cidade-cliente" placeholder="Sua Cidade">
+        <div class="total-box">
+            <span>TOTAL DO PEDIDO:</span>
+            <span class="total-price" id="total-val">R$ 0,00</span>
+        </div>
+        <button class="send-btn" onclick="finalizarPedido()">Enviar seu pedido</button>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, sections, tablinks;
+        sections = document.getElementsByClassName("menu-section");
+        for (i = 0; i < sections.length; i++) {
+            sections[i].style.display = "none";
+            sections[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+
+    let total = 0;
+    let itensPedido = [];
+
+    function addToCart(nome, preco) {
+        total += preco;
+        itensPedido.push(nome);
+        document.getElementById('total-val').innerText = "R$ " + total.toFixed(2).replace('.', ',');
+    }
+
+    function finalizarPedido() {
+        if(total === 0) {
+            alert("Por favor, adicione pelo menos um item ao seu pedido.");
+            return;
+        }
+        const nome = document.getElementById('nome-cliente').value;
+        const contato = document.getElementById('contato-cliente').value;
+        const endereco = document.getElementById('end-cliente').value;
+        const cidade = document.getElementById('cidade-cliente').value;
+
+        const msg = `*NOVO PEDIDO PJ STUDIO*\n\n*Itens:* ${itensPedido.join(', ')}\n*Total:* R$ ${total.toFixed(2).replace('.', ',')}\n\n*--- Entrega ---*\n*Cliente:* ${nome}\n*Contato:* ${contato}\n*Endereço:* ${endereco}\n*Cidade:* ${cidade}`;
+        
+        const url = "https://wa.me/5524981196037?text=" + encodeURIComponent(msg);
+        window.open(url, "_blank");
+    }
+</script>
+
+</body>
+</html>
