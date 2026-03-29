@@ -27,7 +27,19 @@
         .logo-area img { width: 80px; border-radius: 10px; border: 2px solid #ffcc00; }
         .business-name { color: #ffcc00; font-weight: bold; font-size: 1.4rem; text-transform: uppercase; margin-top: 5px; }
 
-        .tabs { display: flex; gap: 8px; margin-bottom: 25px; overflow-x: auto; width: 100%; max-width: 500px; padding-bottom: 5px; }
+        /* AJUSTE CIRÚRGICO NAS TABS PARA NÃO CORTAR O TEXTO */
+        .tabs { 
+            display: flex; 
+            gap: 8px; 
+            margin-bottom: 25px; 
+            overflow-x: auto; 
+            width: 100%; 
+            max-width: 500px; 
+            padding: 5px 0;
+            scrollbar-width: none; /* Esconde scroll no Firefox */
+        }
+        .tabs::-webkit-scrollbar { display: none; } /* Esconde scroll no Chrome/Safari */
+
         .tab-btn {
             background: #2a2a2a;
             color: #fff;
@@ -36,7 +48,8 @@
             border-radius: 25px;
             cursor: pointer;
             font-weight: bold;
-            white-space: nowrap;
+            white-space: nowrap; /* Garante que o texto fique em uma linha */
+            flex-shrink: 0; /* Impede o botão de espremer o texto */
         }
         .tab-btn.active { background: #ffcc00; color: #000; }
 
