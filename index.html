@@ -192,7 +192,7 @@
             <span>TOTAL DO PEDIDO:</span>
             <span class="total-price" id="total-val">R$ 0,00</span>
         </div>
-        <button class="send-btn" onclick="finalizarPedido()">Finalizar e Enviar via WhatsApp</button>
+        <button class="send-btn" onclick="finalizarPedido()">Enviar seu pedido</button>
     </div>
 </div>
 
@@ -230,6 +230,7 @@
         const nome = document.getElementById('nome-cliente').value;
         const endereco = document.getElementById('end-cliente').value;
         const texto = encodeURIComponent(`*PEDIDO PJ STUDIO*\n\n*Itens:* ${itensPedido.join(', ')}\n*Total:* R$ ${total.toFixed(2)}\n\n*Cliente:* ${nome}\n*Endereço:* ${endereco}`);
+        // Mantenho o link do WhatsApp para o envio funcionar, apenas mudei o texto do botão visual.
         window.open(`https://wa.me/55XXXXXXXXXXX?text=${texto}`);
     }
 </script>
