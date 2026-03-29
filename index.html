@@ -187,7 +187,10 @@
 
     <div class="footer-area">
         <input type="text" id="nome-cliente" placeholder="Seu Nome">
+        <input type="text" id="contato-cliente" placeholder="Seu Contato (WhatsApp)">
         <input type="text" id="end-cliente" placeholder="Seu Endereço">
+        <input type="text" id="cidade-cliente" placeholder="Sua Cidade">
+        
         <div class="total-box">
             <span>TOTAL DO PEDIDO:</span>
             <span class="total-price" id="total-val">R$ 0,00</span>
@@ -228,9 +231,12 @@
             return;
         }
         const nome = document.getElementById('nome-cliente').value;
+        const contato = document.getElementById('contato-cliente').value;
         const endereco = document.getElementById('end-cliente').value;
-        const texto = encodeURIComponent(`*PEDIDO PJ STUDIO*\n\n*Itens:* ${itensPedido.join(', ')}\n*Total:* R$ ${total.toFixed(2)}\n\n*Cliente:* ${nome}\n*Endereço:* ${endereco}`);
-        // Mantenho o link do WhatsApp para o envio funcionar, apenas mudei o texto do botão visual.
+        const cidade = document.getElementById('cidade-cliente').value;
+
+        const texto = encodeURIComponent(`*NOVO PEDIDO PJ STUDIO*\n\n*Itens:* ${itensPedido.join(', ')}\n*Total:* R$ ${total.toFixed(2)}\n\n*--- Dados de Entrega ---*\n*Cliente:* ${nome}\n*Contato:* ${contato}\n*Endereço:* ${endereco}\n*Cidade:* ${cidade}`);
+        
         window.open(`https://wa.me/55XXXXXXXXXXX?text=${texto}`);
     }
 </script>
