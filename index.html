@@ -109,91 +109,15 @@
 
     <div id="bebidas" class="menu-section">
         <div class="product-card">
-            <img src="foto5.jpg" class="product-img">
+            <img src="foto7.jpg" class="product-img">
             <div class="product-info">
-                <h3>Bebida Gelada</h3>
-                <p>Coca-Cola Lata 350ml trincando de gelada.</p>
+                <h3>Coca-Cola Lata</h3>
+                <p>350ml geladinha.</p>
                 <div class="product-price">R$ 6,00</div>
             </div>
-            <button class="add-btn" onclick="addToCart('Bebida Gelada', 6.00)">+</button>
+            <button class="add-btn" onclick="addToCart('Coca-Cola Lata', 6.00)">+</button>
         </div>
     </div>
 
     <div id="doces" class="menu-section">
-        <div class="product-card">
-            <img src="foto4.jpg" class="product-img">
-            <div class="product-info">
-                <h3>Sobremesa PJ</h3>
-                <p>Delícia exclusiva da casa.</p>
-                <div class="product-price">R$ 12,00</div>
-            </div>
-            <button class="add-btn" onclick="addToCart('Sobremesa PJ', 12.00)">+</button>
-        </div>
-    </div>
-
-    <div id="molhos" class="menu-section">
-        <div class="product-card">
-            <img src="foto6.jpg" class="product-img">
-            <div class="product-info">
-                <h3>Molho Verde</h3>
-                <p>Copo 30ml - Receita especial da casa.</p>
-                <div class="product-price">R$ 2,50</div>
-            </div>
-            <button class="add-btn" onclick="addToCart('Molho Verde', 2.50)">+</button>
-        </div>
-        <div class="product-card">
-            <img src="foto7.jpg" class="product-img">
-            <div class="product-info">
-                <h3>Molho Especial Chef</h3>
-                <p>Copo 30ml - Sabor inconfundível.</p>
-                <div class="product-price">R$ 3,00</div>
-            </div>
-            <button class="add-btn" onclick="addToCart('Molho Especial Chef', 3.00)">+</button>
-        </div>
-    </div>
-
-    <div class="footer-area">
-        <div class="delivery-msg">⚠️ Preencha os dados completos para entrega</div>
-        <input type="text" id="nome" placeholder="Nome Completo">
-        <input type="text" id="tel" placeholder="Telefone de Contato">
-        <input type="text" id="rua" placeholder="Rua, Nº e Bairro">
-        <input type="text" id="ref" placeholder="Cidade / Ponto de Referência">
-
-        <div class="total-box">
-            <span>TOTAL:</span>
-            <span class="total-price" id="total-val">R$ 0,00</span>
-        </div>
-
-        <button class="send-btn" onclick="finalizarPedido()">Enviar Pedido</button>
-    </div>
-</div>
-
-<script>
-    function openTab(evt, tabName) {
-        var i, sections, tablinks;
-        sections = document.getElementsByClassName("menu-section");
-        for (i = 0; i < sections.length; i++) { sections[i].style.display = "none"; }
-        tablinks = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.classList.add("active");
-    }
-
-    let total = 0;
-    let itensPedido = [];
-
-    function addToCart(nome, preco) {
-        total += preco;
-        itensPedido.push(nome);
-        document.getElementById('total-val').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
-    }
-
-    function finalizarPedido() {
-        if(total === 0) { alert("Adicione itens!"); return; }
-        const nome = document.getElementById('nome').value;
-        const msg = encodeURIComponent(`*PEDIDO PJ STUDIO*\n\n*Itens:* ${itensPedido.join(', ')}\n*Total:* R$ ${total.toFixed(2)}\n\n*Cliente:* ${nome}`);
-        window.open(`https://wa.me/55XXXXXXXXXXX?text=${msg}`);
-    }
-</script>
-</body>
-</html>
+        <div class="product-card
